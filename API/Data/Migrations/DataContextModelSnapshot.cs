@@ -46,7 +46,10 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(8, 2)");
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
@@ -54,12 +57,27 @@ namespace API.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Username")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
+                    b.HasIndex("AppUserId");
+
                     b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("API.Entities.Expense", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "User")
+                        .WithMany("Expenses")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("API.Entities.AppUser", b =>
+                {
+                    b.Navigation("Expenses");
                 });
 #pragma warning restore 612, 618
         }

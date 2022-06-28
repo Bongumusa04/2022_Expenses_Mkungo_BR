@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using API.Errors;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 

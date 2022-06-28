@@ -1,11 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <div class="container">
-      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Expense Manager</a>
+      <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Expense Manager</a>
   
       <ul class="navbar-nav mr-auto" >
+        <li  *ngIf="(accountService.currentUser$ |async) === null" class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
         <ng-container *ngIf="accountService.currentUser$ |async">
+          
           <li class="nav-item">
-            <a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a>
+            <a class="nav-link" routerLink="/expenses" routerLinkActive="active">Expenses</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
@@ -14,25 +21,26 @@
             <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
           </li>
         </ng-container>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
-        </li>
         
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/disclaimer" routerLinkActive="active">Desclaimer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+        </li>
+       
         
       </ul>
 
       <div class="dropdown" *ngIf="(accountService.currentUser$ |async) as user" dropdown> 
-        <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.username |titlecase}}</a>
-        <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item">Edit Profile</a>
-          <div class="dropdown-divider"></div>
+        <a class="dropdown-toggle text-dark" dropdownToggle>Welcome {{user.username |titlecase}}</a>
+        <div class="dropdown-menu mt-2" *dropdownMenu>
           <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>
       </div>
 
       <form  *ngIf="(accountService.currentUser$ |async) === null" loginForm="ngForm" 
-      class="row g-3" (ngSubmit)="login()" autocomplete="off" >
+      class="row g-3 mt-1" (ngSubmit)="login()" autocomplete="off" >
       <div class="col-auto">
         <input 
             name="username"
@@ -50,7 +58,7 @@
             placeholder="Password" />
        </div>
        <div class="col-auto">
-            <button class="btn btn-success mb-3" type="submit">
+            <button class="btn btn-secondary mb-3" type="submit">
               Login
             </button>
         </div>

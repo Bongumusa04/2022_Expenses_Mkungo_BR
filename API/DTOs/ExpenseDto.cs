@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using API.Entities;
 
 namespace API.DTOs
 {
@@ -20,7 +21,12 @@ namespace API.DTOs
         [Range(0, 1000000)]
         public decimal Amount { get; set; }
 
-        [MaxLength(50)]
-        public string Username { get; set; }
+         public static explicit operator ExpenseDto(Expense e) => new ExpenseDto
+        {
+            Id = e.Id,
+            Date = e.Date,
+            Description = e.Description,
+            Amount = e.Amount
+        };
     }
 }

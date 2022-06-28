@@ -6,6 +6,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,19 +25,30 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ExpenseDto>>> GetExpensesAsync()
+        public async Task<ActionResult<IEnumerable<ExpenseDto>>> GetExpensesAsync([FromQuery] ExpenseParams expenseParams)
         {
-            var expense = await _expenseRepository.GetExpensesAsync();
+             expenseParams.Username = User.GetUsername();
+
+            var expense = await _expenseRepository.GetExpensesAsync(expenseParams);
+
+            Response.AddPaginationHeader(expense.CurrentPage, expense.PageSize,
+                expense.TotalCount, expense.TotalPages);
+
              return Ok(expense);
         }
 
         [HttpGet("~/api/Expenses/pastmonth")]
-        public async Task<ActionResult<IEnumerable<ExpenseDto>>> GetExpensesByPastMonth(DateTime previousMonth)
+        public async Task<ActionResult<IEnumerable<ExpenseDto>>> GetExpensesByPastMonth(DateTime previousMonth, [FromQuery] ExpenseParams expenseParams)
         {
-            return Ok(await _expenseRepository.GetExpenseByPastMonthAsync(previousMonth));
+             expenseParams.Username = User.GetUsername();
+             var expense = await _expenseRepository.GetExpenseByPastMonthAsync(previousMonth, expenseParams);
+            Response.AddPaginationHeader(expense.CurrentPage, expense.PageSize,
+                expense.TotalCount, expense.TotalPages);
+
+            return Ok(expense);
         }
 
-        [HttpGet("~/api/Expenses/{id}")]
+        [HttpGet("~/api/Expenses/{id}",Name = "GetExpense")]
         public async Task<ActionResult<ExpenseDto>> GetExpensesById(int id)
         {
             return Ok(await _expenseRepository.GetExpenseByIdAsync(id));
@@ -45,47 +57,34 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult CreateExpense(Expense expense)
         {
+            
             if(!ModelState.IsValid)
             {
                 return BadRequest("Invalid entry.");
             }
-             _expenseRepository.AddExpense(new Expense{
+             var newExpense = _expenseRepository.AddExpense(new Expense{
                 Description = expense.Description,
                 Date = expense.Date,
                 Amount = expense.Amount,
-                Username = User.GetUsername()
-            });
+                AppUserId = User.GetUserId()
+             });
 
-            return Ok();
+            return CreatedAtRoute("GetExpense", new { newExpense.Id }, newExpense);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateExpense(Expense expense)
+        public async Task<IActionResult> UpdateExpense(ExpenseDto expense)
         {
-            var dbExpense = await _context.Expenses.Where(x => x.Id == expense.Id).FirstOrDefaultAsync();
-            if (dbExpense == null)
-                return NotFound();
-
-            dbExpense.Date = expense.Date;
-            dbExpense.Amount = expense.Amount;
-            dbExpense.Description = expense.Description;
-            // who changed this
-            dbExpense.Username = User.GetUsername();
-
-            _expenseRepository.UpdateExpense(dbExpense);
-
-            return Ok(expense);
+            var ex = await _expenseRepository.GetExpenseByIdAsync(User.GetUserId());
+            return Ok( _expenseRepository.UpdateExpense(expense));
         }
 
         [HttpDelete]
-        public IActionResult DeleteExpense(int? id)
+        public IActionResult DeleteExpense(ExpenseDto expense)
         {
-            if(!id.HasValue)
-            {
-                return NotFound();
-            }
-            _expenseRepository.DeleteExpense(id);
+            _expenseRepository.DeleteExpense(expense);
             return Ok();
         }
+      
     }
 }

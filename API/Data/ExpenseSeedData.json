@@ -1,0 +1,266 @@
+[
+    {
+      "Id": 1,
+      "UserName": "ryan",
+      "Email": "ryanmkhungo@gmail.com",
+      "Expenses": [
+        {
+          "Amount": 420.12,
+          "Date": "2022-06-27",
+          "Description": "clothing account"
+        },
+        {
+          "Amount": 90.21,
+          "Date": "2022-04-29",
+          "Description": "clothing account"
+        },
+        {
+          "Amount": 65.47,
+          "Date": "2022-05-05",
+          "Description": "clothing account"
+        },
+        {
+          "Amount": 226.74,
+          "Date": "2022-04-04",
+          "Description": "books"
+        },
+        {
+          "Amount": 782.75,
+          "Date": "2022-06-01",
+          "Description": "books"
+        },
+        {
+          "Amount": 665.26,
+          "Date": "2022-04-08",
+          "Description": "books"
+        },
+        {
+          "Amount": 501.69,
+          "Date": "2022-06-17",
+          "Description": "books"
+        },
+        {
+          "Amount": 774.43,
+          "Date": "2022-06-14",
+          "Description": "books"
+        },
+        {
+          "Amount": 347.55,
+          "Date": "2022-06-27",
+          "Description": "groceries"
+        },
+        {
+          "Amount": 536.45,
+          "Date": "2022-04-28",
+          "Description": "groceries"
+        },
+        {
+          "Amount": 611.47,
+          "Date": "2022-06-08",
+          "Description": "groceries"
+        },
+        {
+          "Amount": 747.29,
+          "Date": "2022-04-04",
+          "Description": "groceries"
+        },
+        {
+          "Amount": 229.24,
+          "Date": "2022-06-22",
+          "Description": "groceries"
+        },
+        {
+          "Amount": 370.06,
+          "Date": "2022-04-22",
+          "Description": "travelling"
+        },
+        {
+          "Amount": 160.80,
+          "Date": "2022-05-08",
+          "Description": "travelling"
+        },
+        {
+          "Amount": 615.75,
+          "Date": "2022-04-12",
+          "Description": "travelling"
+        },
+        {
+          "Amount": 603.98,
+          "Date": "2022-04-08",
+          "Description": "travelling"
+        },
+        {
+          "Amount": 710.13,
+          "Date": "2022-05-02",
+          "Description": "rent"
+        },
+        {
+          "Amount": 126.42,
+          "Date": "2022-04-04",
+          "Description": "rent"
+        },
+        {
+          "Amount": 776.13,
+          "Date": "2022-04-27",
+          "Description": "rent"
+        },
+        {
+          "Amount": 920.73,
+          "Date": "2022-05-25",
+          "Description": "rent"
+        },
+        {
+          "Amount": 962.64,
+          "Date": "2022-05-20",
+          "Description": "wifi"
+        },
+        {
+          "Amount": 386.05,
+          "Date": "2022-05-11",
+          "Description": "wifi"
+        },
+        {
+          "Amount": 840.97,
+          "Date": "2022-04-22",
+          "Description": "wifi"
+        },
+        {
+          "Amount": 418.62,
+          "Date": "2022-06-05",
+          "Description": "wifi"
+        }
+      ]
+    },
+    {
+        "Id": 2,
+        "UserName": "bongumusa",
+        "Email": "bongumusamkhungo@gmail.com",
+        "Expenses": [
+          {
+            "Amount": 724.78,
+            "Date": "2022-04-20",
+            "Description": "clothing account"
+          },
+          {
+            "Amount": 419.03,
+            "Date": "2022-06-04",
+            "Description": "clothing account"
+          },
+          {
+            "Amount": 58.29,
+            "Date": "2022-06-24",
+            "Description": "clothing account"
+          },
+          {
+            "Amount": 151.91,
+            "Date": "2022-05-26",
+            "Description": "fuel"
+          },
+          {
+            "Amount": 599.91,
+            "Date": "2022-04-25",
+            "Description": "fuel"
+          },
+          {
+            "Amount": 504.67,
+            "Date": "2022-06-11",
+            "Description": "fuel"
+          },
+          {
+            "Amount": 999.15,
+            "Date": "2022-05-05",
+            "Description": "fuel"
+          },
+          {
+            "Amount": 156.36,
+            "Date": "2022-05-14",
+            "Description": "fuel"
+          },
+          {
+            "Amount": 546.87,
+            "Date": "2022-05-05",
+            "Description": "groceries"
+          },
+          {
+            "Amount": 953.47,
+            "Date": "2022-06-28",
+            "Description": "groceries"
+          },
+          {
+            "Amount": 125.84,
+            "Date": "2022-04-17",
+            "Description": "groceries"
+          },
+          {
+            "Amount": 516.70,
+            "Date": "2022-04-04",
+            "Description": "groceries"
+          },
+          {
+            "Amount": 926.87,
+            "Date": "2022-04-29",
+            "Description": "groceries"
+          },
+          {
+            "Amount": 200.68,
+            "Date": "2022-04-29",
+            "Description": "debit orders"
+          },
+          {
+            "Amount": 635.07,
+            "Date": "2022-06-05",
+            "Description": "debit orders"
+          },
+          {
+            "Amount": 564.29,
+            "Date": "2022-05-14",
+            "Description": "debit orders"
+          },
+          {
+            "Amount": 211.80,
+            "Date": "2022-05-25",
+            "Description": "debit orders"
+          },
+          {
+            "Amount": 436.72,
+            "Date": "2022-06-16",
+            "Description": "debit orders"
+          },
+          {
+            "Amount": 505.95,
+            "Date": "2022-04-17",
+            "Description": "household bills"
+          },
+          {
+            "Amount": 416.95,
+            "Date": "2022-05-15",
+            "Description": "household bills"
+          },
+          {
+            "Amount": 472.04,
+            "Date": "2022-04-18",
+            "Description": "household bills"
+          },
+          {
+            "Amount": 737.01,
+            "Date": "2022-06-20",
+            "Description": "household bills"
+          },
+          {
+            "Amount": 293.10,
+            "Date": "2022-04-06",
+            "Description": "school fees"
+          },
+          {
+            "Amount": 532.82,
+            "Date": "2022-04-21",
+            "Description": "school fees"
+          },
+          {
+            "Amount": 386.77,
+            "Date": "2022-05-30",
+            "Description": "school fees"
+          }
+        ]
+      }
+  ]
