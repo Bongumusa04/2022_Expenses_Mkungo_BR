@@ -1,0 +1,16 @@
+button.btn.btn-info:hover {
+    background-color: white; 
+    color: #088F8F;
+}
+button.btn.btn-info {
+    background-color: #088F8F; 
+    color: white;   
+}
+button.btn.btn-danger {
+    background-color: #8f0808; 
+    color: white;   
+}
+button.btn.btn-danger:hover {
+    background-color: white; 
+    color:  #8f0808; 
+}

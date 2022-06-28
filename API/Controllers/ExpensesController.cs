@@ -72,17 +72,25 @@ namespace API.Controllers
             return CreatedAtRoute("GetExpense", new { newExpense.Id }, newExpense);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateExpense(ExpenseDto expense)
+        [HttpPut("{expenseId}")]
+        public async Task<IActionResult> UpdateExpense(int id)
         {
-            var ex = await _expenseRepository.GetExpenseByIdAsync(User.GetUserId());
-            return Ok( _expenseRepository.UpdateExpense(expense));
+            var ex = await _expenseRepository.GetExpenseByIdAsync(id);
+  
+            var newExpense = _expenseRepository.AddExpense(new Expense{
+                Description = ex.Description,
+                Date = ex.Date,
+                Amount = ex.Amount,
+                AppUserId = User.GetUserId()
+             });
+
+            return Ok( _expenseRepository.UpdateExpense(id));
         }
 
-        [HttpDelete]
-        public IActionResult DeleteExpense(ExpenseDto expense)
+        [HttpDelete("delete-expense/{expenseId}")]
+        public IActionResult DeleteExpense(int id)
         {
-            _expenseRepository.DeleteExpense(expense);
+            _expenseRepository.DeleteExpense(id);
             return Ok();
         }
       

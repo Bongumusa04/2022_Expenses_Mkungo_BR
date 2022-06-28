@@ -29,10 +29,9 @@ namespace API.Data
             _context.SaveChanges();
             return (ExpenseDto)expense;
         }
-
-        public async void DeleteExpense(ExpenseDto expense)
+        public async void DeleteExpense(int id)
         {
-             var dbExpense = await _context.Expenses.FirstAsync(e => e.Id == expense.Id);
+             var dbExpense = await _context.Expenses.FirstAsync(e => e.Id == id);
             _context.Expenses.Remove(dbExpense);
             _context.SaveChanges();
         }
@@ -65,17 +64,14 @@ namespace API.Data
             return await PagedList<ExpenseDto>.CreateAsync(query, expenseParams.PageNumber, expenseParams.PageSize);            
         }
 
-        public ExpenseDto UpdateExpense(ExpenseDto expense)
+        public ExpenseDto UpdateExpense(int id)
         {
             var dbExpense = _context.Expenses
-                 .Where(e => e.Id == expense.Id)
+                 .Where(e => e.Id == id)
                  .First();
-            dbExpense.Description = expense.Description;
-            dbExpense.Amount = expense.Amount;
-            dbExpense.Date = expense.Date;
-
+        
             _context.SaveChanges();
-            return expense;
+            return (ExpenseDto)dbExpense;
         }
     }
 }          

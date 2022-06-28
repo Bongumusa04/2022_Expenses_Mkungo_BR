@@ -20,6 +20,7 @@ namespace API.DTOs
 
         [Range(0, 1000000)]
         public decimal Amount { get; set; }
+        public int AppUserId { get; set; }
 
          public static explicit operator ExpenseDto(Expense e) => new ExpenseDto
         {

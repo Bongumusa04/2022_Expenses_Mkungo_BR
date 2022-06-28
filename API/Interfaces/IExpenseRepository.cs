@@ -14,8 +14,8 @@ namespace API.Interfaces
         Task<PagedList<ExpenseDto>> GetExpenseByPastMonthAsync(DateTime previousMonth,ExpenseParams expenseParams);
         Task<ExpenseDto> GetExpenseByIdAsync(int id);
         ExpenseDto AddExpense(Expense expense);
-        ExpenseDto UpdateExpense(ExpenseDto expense);
-        void DeleteExpense(ExpenseDto expense);
+        ExpenseDto UpdateExpense(int id);
+        void DeleteExpense(int id);
         
     }
 }

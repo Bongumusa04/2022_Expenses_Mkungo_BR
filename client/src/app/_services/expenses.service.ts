@@ -46,6 +46,19 @@ export class ExpensesService {
   getExpense(id: number) {
     const expense = this.expenses.find(x => x.id == id);
     if(expense !== undefined) return of(expense);
-    return this.http.get<Expense>(this.baseUrl + 'expenses/' + id);
+    return this.http.get<Expense>(this.baseUrl + 'expenses/' + expense.id);
   }
+
+  deleteExpense(id: number) {
+    return this.http.delete(this.baseUrl + 'expenses/delete-expense/' + id);
+  }
+
+  updateMember(id: number) {
+    return this.http.put(this.baseUrl + 'expenses/', id);
+ 
+  }
+  addExpense(expense: Expense) {
+    return this.http.post(this.baseUrl + 'expenses/', expense);
+  }
+
 }
