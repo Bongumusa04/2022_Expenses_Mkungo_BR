@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace API.Data.Migrations
 {
-    public partial class ExtendedEntity : Migration
+    public partial class PostgresInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,12 +12,12 @@ namespace API.Data.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserName = table.Column<string>(type: "TEXT", nullable: true),
-                    Email = table.Column<string>(type: "TEXT", nullable: true),
-                    PasswordHash = table.Column<byte[]>(type: "BLOB", nullable: true),
-                    PasswordSalt = table.Column<byte[]>(type: "BLOB", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserName = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: true),
+                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,12 +28,12 @@ namespace API.Data.Migrations
                 name: "Expenses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Amount = table.Column<decimal>(type: "TEXT", nullable: false),
-                    AppUserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(8, 2)", nullable: false),
+                    AppUserId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
